@@ -1,0 +1,8 @@
+streamlit
+gensim
+bertopic
+nltk
+scikit-learn
+pandas
+numpy
+pyLDAvis
