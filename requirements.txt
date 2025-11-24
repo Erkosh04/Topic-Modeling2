@@ -1,9 +1,10 @@
 streamlit
 gensim
-bertopic
 nltk
+bertopic
 scikit-learn
-pandas
 numpy
-pyLDAvis
-
+pandas
+umap-learn
+hdbscan
+sentence-transformers
