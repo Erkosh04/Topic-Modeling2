@@ -1,7 +1,7 @@
 import streamlit as st
 from preprocessing import preprocess_text
 from lda_model import train_lda
-from bertopic_model import get_bert_topic
+from bertopic_model import train_bertopic
 
 st.title("Topic Modeling App (LDA + BERTopic)")
 
@@ -26,3 +26,4 @@ if st.button("Модельді іске қосу"):
             topic = get_bert_topic(clean)
             st.write("BERTopic Тақырыбы:")
             st.write(topic)
+
