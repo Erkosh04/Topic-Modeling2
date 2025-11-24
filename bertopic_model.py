@@ -1,6 +1,5 @@
 from bertopic import BERTopic
 
-# BERTopic requires at least 2–5 documents to train
 dummy_docs = [
     "technology is advancing fast",
     "artificial intelligence changes human life",
@@ -9,7 +8,9 @@ dummy_docs = [
     "science and innovation drive progress"
 ]
 
-model = BERTopic()
+# UMAP-ты өшіреміз → қатесіз жұмыс істейді
+model = BERTopic(umap_model=None)
+
 model.fit(dummy_docs)
 
 def get_bert_topic(text):
