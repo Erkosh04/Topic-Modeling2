@@ -1,28 +1,29 @@
 import streamlit as st
 from preprocessing import preprocess_text
 from lda_model import train_lda
-from bertopic_model import get_bert_topic
+from bertopic_model import train_bertopic
 
-st.title("Topic Modeling App (LDA + BERTopic)")
+st.title("Topic Modeling (LDA & BERTopic)")
 
 text = st.text_area("Мәтін енгізіңіз:")
 
-model_choice = st.selectbox("Модельді таңдаңыз:", ["LDA", "BERTopic"])
+model = st.selectbox("Модельді таңдаңыз:", ["LDA", "BERTopic"])
 
-if st.button("Модельді іске қосу"):
-    if text.strip() == "":
-        st.error("Мәтін енгізіңіз!")
+if st.button("Жіберу"):
+    if len(text) < 5:
+        st.error("Мәтін тым қысқа!")
     else:
         clean = preprocess_text(text)
-        st.subheader("Өңделген мәтін:")
+        st.write("Өңделген мәтін:")
         st.write(clean)
 
-        if model_choice == "LDA":
-            topics = train_lda([clean])
-            st.subheader("LDA Тақырыптары:")
+        if model == "LDA":
+            topics, coh = train_lda([clean])
+            st.subheader("LDA Тақырыптар:")
             st.write(topics)
+            st.write("Coherence:", coh)
 
-        elif model_choice == "BERTopic":
-            topic = get_bert_topic(clean)
-            st.subheader("BERTopic Тақырыбы:")
-            st.write(topic)
+        else:
+            topics = train_bertopic([clean])
+            st.subheader("BERTopic Тақырыптар:")
+            st.write(topics)
