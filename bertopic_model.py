@@ -1,17 +1,17 @@
 from bertopic import BERTopic
 
-# Dummy training data (BERTopic requires multiple docs)
-dummy_texts = [
-    "technology is advancing rapidly in modern society",
-    "artificial intelligence impacts human life",
-    "internet and smartphones changed communication",
-    "science and innovation drive progress",
-    "education improves with digital tools"
+# BERTopic requires at least 2–5 documents to train
+dummy_docs = [
+    "technology is advancing fast",
+    "artificial intelligence changes human life",
+    "internet and smartphones improve communication",
+    "digital tools transform education",
+    "science and innovation drive progress"
 ]
 
 model = BERTopic()
-model.fit(dummy_texts)
+model.fit(dummy_docs)
 
 def get_bert_topic(text):
-    topics, _ = model.transform([text])
-    return topics
+    topic, _ = model.transform([text])
+    return topic
