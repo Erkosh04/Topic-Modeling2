@@ -1,10 +1,10 @@
 streamlit
-gensim
 nltk
+gensim
 bertopic
-scikit-learn
-numpy
 pandas
+numpy
+scikit-learn
 umap-learn
 hdbscan
 sentence-transformers
